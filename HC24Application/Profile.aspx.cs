@@ -38,7 +38,6 @@ namespace HC24Application
         }
         public string GetDetails()
         {
-
             string data = string.Empty;
             StaffBLL staff = new StaffBLL();
             dt = staff.Staff_Details();
@@ -63,13 +62,9 @@ namespace HC24Application
                               "</div>" +
                            "</div> " +
                         "</div>";
-
                 }
             }
-
             return data;
-
-
         }
         public string GetAddress()
         {
@@ -130,9 +125,9 @@ namespace HC24Application
                                  "</div>"+
                               "</div>"+
                           "<div class='iq-card-body'>"+                    
-  "<div class='row'>"+
-    "<div class='col-6'>"+
-     "<ul class='list-inline m-0 p-0'>"+
+                            "<div class='row'>"+
+                                "<div class='col-6'>"+
+                                    "<ul class='list-inline m-0 p-0'>"+
                                            "<li>"+
                                        "<h6 class='float-left mb-1'>NI Number</h6>"+
                                        "<div class='d-inline-block w-100'>"+
@@ -140,9 +135,9 @@ namespace HC24Application
                                        "</div>" +
                                     "</li>" +
                                       "</ul>" +
-    "</div>" +
-    "<div class='col-6'>" +
-      "<ul class='list-inline m-0 p-0'>" +
+                                            "</div>" +
+                                                "<div class='col-6'>" +
+                                            "<ul class='list-inline m-0 p-0'>" +
                                            "<li>" +
                                        "<h6 class='float-left mb-1'>DBS Number</h6>" +
                                        "<div class='d-inline-block w-100'>" +
@@ -150,9 +145,9 @@ namespace HC24Application
                                        "</div>" +
                                     "</li>" +
                                       "</ul>" +
-    "</div>" +
-       "<div class='col-6'>" +
-      "<ul class='list-inline m-0 p-0'>" +
+                                            "</div>" +
+                                        "<div class='col-6'>" +
+                                        "<ul class='list-inline m-0 p-0'>" +
                                            "<li>" +
                                        "<h6 class='float-left mb-1'>DBS Type</h6>"+
                                        "<div class='d-inline-block w-100'>" +
@@ -160,9 +155,9 @@ namespace HC24Application
                                        "</div> "+
                                      "</li> " +
                                        "</ul> " +
-     "</div> " +
-       "<div class='col-6'>" +
-       "<ul class='list-inline m-0 p-0'>" +
+                                        "</div> " +
+                                            "<div class='col-6'>" +
+                                            "<ul class='list-inline m-0 p-0'>" +
                                             "<li>" +
                                         "<h6 class='float-left mb-1'>DBS Issue Date</h6>" +
                                         "<div class='d-inline-block w-100'>" +
@@ -170,19 +165,19 @@ namespace HC24Application
                                         "</div>" +
                                      "</li>" +
                                        "</ul>" +
-     "</div>" +
-       "<div class='col-6'>" +
-       "<ul class='list-inline m-0 p-0'>" +
+                                        "</div>" +
+                                        "<div class='col-6'>" +
+                                        "<ul class='list-inline m-0 p-0'>" +
                                             "<li>" +
                                         "<h6 class='float-left mb-1'>DBS Expiry Date</h6>" +
- "<div class='d-inline-block w-100'>" +
+                                        "<div class='d-inline-block w-100'>" +
                                           " <p class='badge badge-primary'>" + dr["DBSExpiryDate"] + "</p>" +
                                         "</div>" +
                                      "</li>" +
                                       " </ul>" +
-     "</div>" +
-       "<div class='col-6'>" +
-       "<ul class='list-inline m-0 p-0'>" +
+                                    "</div>" +
+                                         "<div class='col-6'>" +
+                                        "<ul class='list-inline m-0 p-0'>" +
                                             "<li>" +
                                         "<h6 class='float-left mb-1'>Uk Full Driving Licence</h6>" +
                                         "<div class='d-inline-block w-100'>" +
@@ -190,14 +185,23 @@ namespace HC24Application
                                        " </div>" +
                                      "</li>" +
                                        "</ul>" +
-     "</div>" +
-
-   "</div>" +
-
+                                    "</div>" +   
+                                "</div>" +
                                "</div>" +
- "</div>" +
-
-                   "</div>";
+                            "</div>" +
+                   "</div>" +
+                   "<div class='col-md-12'><div class='iq-card'><div class='iq-card-header d-flex justify-content-between'><div class='iq-header-title'>" +
+                   "<h4 class='card-title'>Education</h4></div></div><div class='iq-card-body'>" +
+                   "<table class='table mb-0 table-borderless'><thead><tr><th scope='col'>Year</th><th scope='col'>Degree</th><th scope='col'>Institute</th>" +
+                   "" +
+                   "" +
+                   "" +
+                   "" +
+                   "" +
+                   "" +
+                   "" +
+                   "" +
+                   "";
 
                 }
             }

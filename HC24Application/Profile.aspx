@@ -19,5 +19,41 @@
                       <%=GetAddress()%>
                   </div>
                    <%=GetOtherDetails()%>
+        <div class="col-md-12"><div class="iq-card">
+<div class="iq-card-header d-flex justify-content-between">
+                                 <div class="iq-header-title">
+                                    <h4 class="card-title">Education</h4>
+                                 </div>
+                              </div>
+                              <div class="iq-card-body">
+                                 <table class="table mb-0 table-borderless">
+                                  <thead>
+                                      <tr>
+                                          <th scope="col">Year</th>
+                                          <th scope="col">Degree</th>
+                                          <th scope="col">Institute</th>
+                                          <th scope="col">Result</th>
+                                      </tr>
+                                  </thead>
+                                  <tbody>
+                                      <tr>
+                                          <td>2010</td>
+                                          <td>MBBS, M.D</td>
+                                          <td>University of Wyoming</td>
+                                          <td><span class="badge badge-success">Distinction</span></td>
+                                      </tr>
+                                      <tr>
+                                          <td>2014</td>
+                                          <td>M.D. of Medicine</td>
+                                          <td>Netherland Medical College</td>
+                                          <td><span class="badge badge-success">Distinction</span></td>
+                                      </tr>
+                                  </tbody>
+                              </table>
+                              </div>
+                           </div>
+                        </div>
+
+
                </div>
 </asp:Content>
