@@ -1,0 +1,59 @@
+﻿body {
+ counter-reset: Serial;
+}
+.width100{
+    width:100%;
+}
+.custom-control-label::before {
+    display:none !important;
+}
+.Chkbox_Custom {
+    position: absolute;
+    top: 0.2rem;
+    left: 0.1rem; 
+    width: 1rem;
+    height: 1rem;
+    content: "";
+    background: no-repeat 50%/50% 50%;
+}
+#search_main {
+    padding: 0 0 20px 0;
+}
+/*.iq-card-body table tr td:first-child:before {
+    counter-increment: Serial;*/ /* Increment the Serial counter */
+    /*content:  counter(Serial);*/ /* Display the counter */
+/*}
+.auto-index td:first-child:before {
+    counter-increment: Serial;*/ /* Increment the Serial counter */
+    /*content: counter(Serial);*/ /* Display the counter */
+/*}*/
+.Deatils_Color {
+    color:#000 !important;
+}
+.P-0 {
+    padding:0px;
+}
+.heading_Main {
+    background-color: #089cac;
+    padding: 5px 5px 5px 15px;
+    color: #fff;
+    -webkit-border-radius: 15px 13px 13px 13px;
+}
+.custom_Formgroupcolor{
+
+    color:#000;
+}
+.custome_Table {
+    font-size:12px;
+}
+.custome_Heading {
+    font-size:15px;
+}
+.custome_Label {
+    font-size:16px;
+    font-weight:600;
+}
+.custome_Heading {
+    text-align: center !important;
+    font-size: 12px;
+}

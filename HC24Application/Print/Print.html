@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Profile Page Design Example</title>
+
+    <meta name="author" content="Codeconvey" />
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900&display=swap" rel="stylesheet">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css'>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css'>
+
+    <!--Only for demo purpose - no need to add.-->
+    <link rel="stylesheet" href="css/demo.css" />
+
+    <link rel="stylesheet" href="css/style.css">
+    <script language="javascript">
+    function printDiv(divName) {
+        var printContents = document.getElementById(divName).innerHTML;
+        var originalContents = document.body.innerHTML;
+
+        document.body.innerHTML = printContents;
+
+        window.print();
+
+        document.body.innerHTML = originalContents;
+    }
+    </script>
+</head>
+<body>
+
+
+<!--<header class="ScriptHeader">
+    <div class="rt-container">
+    	<div class="col-rt-12">
+        	<div class="rt-heading">
+            	<h1>Staff Profile</h1>
+             
+            </div>
+        </div>
+    </div>
+</header>-->
+
+<section>
+    <div class="rt-container" >
+        <div class="col-rt-12">
+            <div class="Scriptcontent" id="PrintDiv">
+
+                <!-- Student Profile -->
+                <div class="student-profile py-4">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-10 P-0 ">
+                                <div class="card ">
+
+                                </div>
+                            </div>
+                            <div class="col-lg-2 P-0 ">
+                                <div class="card  Border_Side b-0">
+                                    <div class="card-header bg-transparent text-center P-0 b-0">
+                                        <img class="p-1" src="../images/hc24-logo.gif" alt="student dp">
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+
+
+                            <div class="col-lg-2 P-0 ">
+                                <div class="card  Border_Side" style="background-color: #6daced !important;">
+                                    <div class="card-header bg-transparent text-center">
+                                        <img class="profile_img" src="../images/page-img/17.jpg" alt="student dp">
+
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="col-lg-10 P-0 ">
+                                <div class="card ">
+
+                                    <div class="pt-0">
+                                        <table class="table table-bordered even">
+                                            <tr>
+                                                <th width="30%">Candidate FullName</th>
+                                                <td width="2%">:</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <th width="30%">Position	</th>
+                                                <td width="2%">:</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <th width="30%">NMC PIN NO ()</th>
+                                                <td width="2%">:</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <th width="30%">Renewal Date</th>
+                                                <td width="2%">:</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3" style="background-color: white; border-bottom: 0px solid">
+                                                    I confirm that the following information and documents have been obtained in respect of the above named person
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <!--<td>
+                            I confirm that the following information and documents have been obtained in respect of the above named person
+                        </td>-->
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <div class="col-rt-12 P-0">
+                                <div class="card ">
+                                    <div class="card-header bg-transparent border-0 heading">
+                                        <h6 class="mb-0">Disclosure Barring Service / Proof of Identity</h6>
+                                    </div>
+                                    <div class="card-body P-0">
+                                        <p>
+                                            Hc24 Limited is a registered body and therefore legally obliged to carry out an enhanced discloure on all applicants in accordance with the Rehabilitation of Offenders Act 1974.The above candidate has undergone a full enhanced disclosure and a positive employment decision has been made in line with our policies and procedures.In accordance with the DBS (CRB) procedure HC24 does not
+                                            store a copy of the DBS (CRB) but we can provide you with the reference number and date of the DBS(CRB).
+                                        </p>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 P-0 ">
+                                <div class="card ">
+
+                                    <div class="pt-0">
+                                        <table class="table table-bordered">
+                                            <tr>
+                                                <th width="20%">Right to Work</th>
+                                                <th width="20%">NI Number</th>
+                                                <th width="20%">Driving Licence</th>
+                                                <th width="20%">Proof Of Address</th>
+                                                <th width="20%">Reference</th>
+
+                                            </tr>
+                                            <tr>
+                                                <!--<th width="20%">Position	</th>
+                        <td width="2%">:</td>-->
+                                                <td width="20%">British Residence Permit</td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <th width="20%">CRB/DBS Type</th>
+                                                <th width="20%">DBS Number</th>
+                                                <th width="20%">Issue Date</th>
+                                                <th width="20%">Expiry Date</th>
+                                                <th width="20%">DBS Result</th>
+                                            </tr>
+                                            <tr>
+
+                                                <td width="2%">Enhanced</td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <!--<td>
+                            I confirm that the following information and documents have been obtained in respect of the above named person
+                        </td>-->
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <div class="col-lg-12 P-0 ">
+                                <div class="card ">
+                                    <div class="card-header bg-transparent border-0 heading">
+                                        <h6 class="mb-0">QUALIFICATION AND TRAININGS</h6>
+                                    </div>
+                                    <div class="pt-0">
+                                        <table class="table table-bordered">
+                                            <tr>
+                                                <th width="30%">Description</th>
+                                                <th width="10%">Undertaken</th>
+                                                <th width="20%">IssueDate</th>
+                                                <th width="20%">Expiry Date</th>
+                                                <th width="20%">Remark</th>
+
+                                            </tr>
+                                            <tr>
+                                                <!--<th width="20%">Position	</th>
+                        <td width="2%">:</td>-->
+                                                <th width="30%">Adult Life Support</th>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <th width="30%">Basic Life Support</th>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+
+                                                <th width="30%">Confidentiality</th>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+
+                                                <th width="30%">COSHH</th>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+
+                                                <th width="30%">COVID -19 Awareness</th>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+
+                                                <th width="30%">Dementia</th>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+
+                                                <th width="30%">Equality and Diversity</th>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+
+                                                <th width="30%">Fire Safety</th>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+
+                                                <th width="30%">Food Safety Level 2 Awareness</th>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+
+                                                <th width="30%">Health and Safety</th>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+
+                                                <th width="30%">Infection Control</th>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+
+                                                <th width="30%">Information Governance</th>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+
+                                                <th width="30%">Mental Capacity Act</th>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+
+                                                <th width="30%">Moving and handling</th>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+
+                                                <th width="30%">Safeguarding vulnerable adult(level 1 and 2)</th>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+
+                                                <th width="30%">Covid Vaccination 1st Dose and 2nd Dose</th>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <!--<td>
+                            I confirm that the following information and documents have been obtained in respect of the above named person
+                        </td>-->
+                                            </tr>
+                                        </table>
+                                       
+
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <div class="col-lg-12 P-0 " style="padding-top:10px">
+                                <div class="card ">
+                                    <div class="card-header bg-transparent border-0 heading">
+                                        <h6 class="mb-0">WORK HISTORY</h6>
+                                    </div>
+                                    <table class="table table-bordered">
+                                        <tr>
+                                            <th width="20%">Start date</th>
+                                            <th width="20%">End Date</th>
+                                            <th width="20%">Job Title / Ocupation</th>
+                                            <th width="20%">Employer</th>
+                                            <th width="20%">Outcome</th>
+
+                                        </tr>
+                                        <tr>
+                                            <!--<th width="20%">Position	</th>
+            <td width="2%">:</td>-->
+                                            <td width="20%">Start Date</td>
+                                            <td width="20%">End Date</td>
+                                            <td width="20%">Job Title/Occupation</td>
+                                            <td width="20%">Employer</td>
+                                            <td width="20%">Outcome</td>
+                                        </tr>
+
+
+                                        <tr>
+                                            <!--<td>
+                I confirm that the following information and documents have been obtained in respect of the above named person
+            </td>-->
+                                        </tr>
+                                    </table>
+                                </div>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                <!-- partial -->
+
+            </div>
+            <input type="button" onclick="printDiv('PrintDiv')" value="Print only Datalist!" />
+        </div>
+    </div>
+  
+</section>
+     
+
+
+    <!-- Analytics -->
+
+	</body>
+</html>
