@@ -14,6 +14,7 @@
         document.body.innerHTML = originalContents;
     }
     </script>
+    <form runat="server">
             <div class="col-sm-12">
                      <div class="iq-card">
                         <div class="iq-card-header d-flex justify-content-between">
@@ -54,4 +55,5 @@
                         </div>
                      </div>
                   </div>
+        </form>
 </asp:Content>
