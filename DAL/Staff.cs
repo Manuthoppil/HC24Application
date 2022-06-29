@@ -18,19 +18,31 @@ namespace DAL
         {
             try
             {
-                using (cmd = new SqlCommand("tbl_ProfileInsert", con))
+
+                using (cmd = new SqlCommand("tbl_Profile", con))
                 {
+
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@chkpara", "Insert");
-                    cmd.Parameters.AddWithValue("@frstname", stf.FirstName);
-                    cmd.Parameters.AddWithValue("@lastname", stf.lastname);
-                    cmd.Parameters.AddWithValue("@Email", stf.EmailId);
-                    cmd.Parameters.AddWithValue("@phno", stf.PhoneNumber);
-                    cmd.Parameters.AddWithValue("@Nation", stf.Nationality);
-                    cmd.Parameters.AddWithValue("@Dateof", stf.DateofBirth);
+                    cmd.Parameters.AddWithValue("@FirstName", stf.FirstName);
+                    cmd.Parameters.AddWithValue("@LastName", stf.lastname);
+                    cmd.Parameters.AddWithValue("@EmailAdd", stf.EmailId);
+                    cmd.Parameters.AddWithValue("@Phn", stf.PhoneNumber);
+                    cmd.Parameters.AddWithValue("@Nationality", stf.Nationality);
+                    cmd.Parameters.AddWithValue("@Dob", stf.DateofBirth);
+                    cmd.Parameters.AddWithValue("@Address", stf.Address);
+                    cmd.Parameters.AddWithValue("@Street", stf.street);
+                    cmd.Parameters.AddWithValue("@Country", stf.county);
+                    cmd.Parameters.AddWithValue("@Postal", stf.PostCode);
+                    cmd.Parameters.AddWithValue("@Position", stf.Position);
+                    cmd.Parameters.AddWithValue("@ApplicationNo", stf.ApplicationNo);
                     cmd.Parameters.AddWithValue("@Gender", stf.Gender);
-                    //cmd.Parameters.AddWithValue("@Age", Convert.ToInt32(objSchema.Age));
-                    if (con.State.Equals(ConnectionState.Closed)) con.Open();
+                    cmd.Parameters.AddWithValue("@Age", stf.Age);
+
+                    cmd.Parameters.AddWithValue("@Image", stf.image);
+                    cmd.Parameters.AddWithValue("@IsDelete", 1);
+                    if (con.State.Equals(ConnectionState.Closed))
+                        con.Open();
                     int result = cmd.ExecuteNonQuery();
                     con.Close();
                     return result;
@@ -107,13 +119,23 @@ namespace DAL
         {
             try
             {
-                using (cmd = new SqlCommand("tbl_positionInsert", con))
+                using (cmd = new SqlCommand("tbl_StaffPosition", con))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@position", stf.Position);
-                    cmd.Parameters.AddWithValue("@NmcPin",stf.NmcPin);
-                    cmd.Parameters.AddWithValue("@RenewalDate", stf.RenewlDate);
+                    if (stf.Position == "RGN")
+                    {
+                        cmd.Parameters.AddWithValue("@NmcPin", stf.NmcPin);
+                        cmd.Parameters.AddWithValue("@RenewalDate", stf.RenewlDate);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@NmcPin", "");
+                        cmd.Parameters.AddWithValue("@RenewalDate", "");
+                    }
                     cmd.Parameters.AddWithValue("@IsDelete", stf.Isdelete);
+                    cmd.Parameters.AddWithValue("@ApplicationNo", stf.ApplicationNo);
+                    cmd.Parameters.AddWithValue("@Name", stf.Name);
                     if (con.State.Equals(ConnectionState.Closed)) con.Open();
                     int result = cmd.ExecuteNonQuery();
                     con.Close();
@@ -122,28 +144,47 @@ namespace DAL
 
                 }
 
-            } 
-            catch (Exception ex) 
+            }
+            catch (Exception ex)
             {
                 throw ex;
 
             }
-        
+
         }
-        public int InsertOtherDetails(StaffSchema stf) {
+        public int InsertOtherDetails(StaffSchema stf)
+        {
             try
             {
 
                 using (cmd = new SqlCommand("InsertOtherDetails", con))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@NiNumber", stf.NiNumber);
-                    cmd.Parameters.AddWithValue("@DBSNumber", stf.DBS);
+                    cmd.Parameters.AddWithValue("@NationalInsNo", stf.NiNumber);
+                    cmd.Parameters.AddWithValue("@DBS", stf.DBS);
                     cmd.Parameters.AddWithValue("@DBSType", stf.DBSType);
-                    cmd.Parameters.AddWithValue("@DBSIssueDate", stf.DBSIssueDate);
-                    cmd.Parameters.AddWithValue("@DBSExpiryDate", stf.DBSExpirydate);
-                    cmd.Parameters.AddWithValue("@DrivingLicence", stf.Driving);
-                    cmd.Parameters.AddWithValue("@ProofofAddress", stf.ProofofAddress);
+                    cmd.Parameters.AddWithValue("@DBSIssue", stf.DBSIssueDate);
+                    cmd.Parameters.AddWithValue("@DBSExpiry", stf.DBSExpirydate);
+                    cmd.Parameters.AddWithValue("@DrivingLic", stf.Driving);
+                    cmd.Parameters.AddWithValue("@ProofOfAddress", stf.ProofofAddress);
+                    if (stf.ProofofAddress == "YES")
+                    {
+                        cmd.Parameters.AddWithValue("@AddressDoc", stf.ProofDoc);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@AddressDoc", "");
+
+                    }
+                    cmd.Parameters.AddWithValue("@TrainingAttend", stf.Training);
+
+                    cmd.Parameters.AddWithValue("@Issuedate", stf.Issuedate);
+                    cmd.Parameters.AddWithValue("@Expirydate", stf.ExpiryDate);
+                    cmd.Parameters.AddWithValue("@TrainingDoc", stf.TrainingDoc);
+
+
+                    cmd.Parameters.AddWithValue("@Name", stf.Name);
+                    cmd.Parameters.AddWithValue("@ApplicationNo", stf.ApplicationNo);
                     cmd.Parameters.AddWithValue("@Isdelete", stf.Isdelete);
                     if (con.State.Equals(ConnectionState.Closed)) con.Open();
                     int result = cmd.ExecuteNonQuery();
@@ -160,16 +201,16 @@ namespace DAL
 
                 throw ex;
             }
-            finally 
-            { 
-            
-            
-            
+            finally
+            {
+
+
+
             }
-        
-        
-        
-        
+
+
+
+
         }
         public int InsertProof(StaffSchema sfs) {
 

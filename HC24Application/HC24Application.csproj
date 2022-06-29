@@ -366,6 +366,8 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Files\ProofOfAddress\" />
+    <Folder Include="Files\Training\" />
     <Folder Include="StaffDetails\" />
   </ItemGroup>
   <ItemGroup>

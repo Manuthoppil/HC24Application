@@ -40,12 +40,14 @@ namespace HC24Application
             }
         }
         public void RegistrationId() {
-
+            //con.Open();
             query = "select count(*) as count from tbl_Info";
             SqlCommand cmd = new SqlCommand(query, con);
-            con.Open();
+            if (con.State.Equals(ConnectionState.Closed)) con.Open();
             int count = Convert.ToInt16(cmd.ExecuteScalar()) + 1;
             AppLabel.Text = "HC2400" + count;
+            //con.Close();
+
 
 
 
@@ -109,16 +111,16 @@ namespace HC24Application
                 int year2 = Convert.ToInt32(year);
                 int age = year2 - year1;
                 ViewState["age"] = age.ToString();
-                int imagefilelenth = ImageUpload.PostedFile.ContentLength;
-                byte[] imgarray = new byte[imagefilelenth];
-                HttpPostedFile image = ImageUpload.PostedFile;
-                image.InputStream.Read(imgarray, 0, imagefilelenth);
+                //int imagefilelenth = ImageUpload.PostedFile.ContentLength;
+               // byte[] imgarray = new byte[imagefilelenth];
+               // HttpPostedFile image = ImageUpload.PostedFile;
+               // image.InputStream.Read(imgarray, 0, imagefilelenth);
                 StaffSchema staff = new StaffSchema();
                 
-                string result = ImageUpload.PostedFile.FileName;
-               ImageUpload.PostedFile.SaveAs(MapPath("~") + "/Images/Staffimage/" + result);
+                //string result = ImageUpload.PostedFile.FileName;
+               //ImageUpload.PostedFile.SaveAs(MapPath("~") + "/Images/Staffimage/" + result);
            
-                staff.image = result.ToString(); 
+                staff.image = ""; 
                 staff.FirstName = txtfirstname.Text;
                     staff.lastname = txtlastname.Text;
                     staff.EmailId = txtemail.Text;
@@ -148,7 +150,7 @@ namespace HC24Application
                     BLL.StaffBLL staffBLL = new BLL.StaffBLL();
                     staffBLL.InsertStaff(staff);
                 }
-               catch (Exception ex)
+              catch (Exception ex)
                 {
 
                     throw ex;
@@ -205,7 +207,7 @@ namespace HC24Application
             if(DrpAddress.SelectedItem.Text == "YES")
             {
                 string proof = AppLabel.Text + Adrupl.PostedFile.FileName;
-                ImageUpload.PostedFile.SaveAs(MapPath("~") + "/Files/ProofOfAddress/" + proof);
+                Adrupl.PostedFile.SaveAs(MapPath("~") + "/Files/ProofOfAddress/" + proof);
                 sfs.ProofDoc = proof.ToString();
                
             }
@@ -217,7 +219,7 @@ namespace HC24Application
             if (Drptraining.SelectedItem.Text == "YES")
             {
                 string training = AppLabel.Text + tfupld.PostedFile.FileName;
-                ImageUpload.PostedFile.SaveAs(MapPath("~") + "/Files/Training/" + training);
+                tfupld.PostedFile.SaveAs(MapPath("~") + "/Files/Training/" + training);
                 sfs.TrainingDoc = training.ToString();
                 string Issuedate = Inputdate3.Value;
                 DateTime Issuedate2 = DateTime.Parse(Issuedate);
@@ -311,13 +313,13 @@ namespace HC24Application
         }
         protected void Staffadd_Click(object sender, EventArgs e)
         {
-            try
+           try
             {
 
-                //Insert();
-                Imageupload();
-                //InsertPosition();
-                //InsertOtherDetails();
+             Insert();
+              Imageupload();
+            InsertPosition();
+            InsertOtherDetails();
                 if (result >= 0)
                 {
                     ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Staff Details Added')", true);
