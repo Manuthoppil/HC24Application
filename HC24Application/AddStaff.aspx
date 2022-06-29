@@ -1,21 +1,32 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.Master" AutoEventWireup="true" CodeBehind="AddStaff.aspx.cs" Inherits="HC24Application.AddStaff" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.Master" AutoEventWireup="true" CodeBehind="AddStaff.aspx.cs" Inherits="HC24Application.AddStaff" enableEventValidation="true" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
      <script type="text/javascript">
-        function showpreview(input) {
+         function showpreview(input) {
+             var uploadControlImage = document.getElementById('<%=ImageUpload.ClientID %>');
+                
+             if (uploadControlImage.files[0].size > 2097152) {
+                 alert("Profile image size should be leass than 2 Mb");
 
-            if (input.files && input.files[0]) {
 
-                var reader = new FileReader();
-                reader.onload = function (e) {
-                    $('#imgpreview').css('visibility', 'visible');
-                    $('#imgpreview').attr('src', e.target.result);
-                }
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
+                 document.getElementById('ImageUpload').src = "images/user/11.png";
+                 return false;
+             }
+             else {
+                 if (input.files && input.files[0]) {
+
+                     var reader = new FileReader();
+                     reader.onload = function (e) {
+                         $('#imgpreview').css('visibility', 'visible');
+                         $('#imgpreview').attr('src', e.target.result);
+                     }
+                     reader.readAsDataURL(input.files[0]);
+                 }
+             }
+         }
      </script>
+     
      <script type="text/javascript">
     function validate()  
     {
@@ -236,7 +247,146 @@
        
         
      </script> 
-     <style type="text/css">
+     <script type="text/javascript">
+         function checkDOB() {
+
+             var dateString = document.getElementById("<%= exampleInputdate.ClientID %>").value;
+            var myDate = new Date(dateString);
+            
+            var today = new Date();
+      
+            if (myDate > today) {
+               
+                alert("You cannot enter a Date of birth as future date!");
+                document.getElementById("<%= exampleInputdate.ClientID %>").value = "";
+                 return false;
+
+             }
+             return true;
+         }
+         </script>
+     <script type="text/javascript">
+         function checkIssueDate() {
+
+             var dateString = document.getElementById("<%= Inputdate.ClientID %>").value;
+            var myDate = new Date(dateString);
+            
+            var today = new Date();
+      
+            if (myDate > today) {
+               
+                alert("You cannot enter a DBS issue date as future date!");
+                 document.getElementById("<%= Inputdate.ClientID %>").value = "";
+                 return false;
+
+             }
+             return true;
+         }
+  
+     </script>
+  
+     <script type="text/javascript">
+         function checkTrainingIssueDate() {
+
+             var dateString = document.getElementById("<%= Inputdate3.ClientID %>").value;
+            var myDate = new Date(dateString);
+            
+            var today = new Date();
+      
+            if (myDate > today) {
+               
+                alert("You cannot enter a Training issue date as future date!");
+                 document.getElementById("<%= Inputdate3.ClientID %>").value = "";
+                 return false;
+
+             }
+             return true;
+         }
+
+     </script>
+      <script type="text/javascript">
+          function checkRenewalDate() {
+
+              var dateString = document.getElementById("<%= RenewalInputdate.ClientID %>").value;
+            var myDate = new Date(dateString);
+            
+            var today = new Date();
+      
+            if (myDate < today) {
+               
+                alert("You cannot enter Renewal date as past date!");
+                 document.getElementById("<%= RenewalInputdate.ClientID %>").value = "";
+                  return false;
+
+              }
+              return true;
+          }
+
+      </script>
+
+    <script type="text/javascript">
+        function checkExpiryDate() {
+
+            var dateString = document.getElementById("<%= Inputdate2.ClientID %>").value;
+            var myDate = new Date(dateString);
+            
+            var today = new Date();
+      
+            if (myDate < today) {
+               
+                alert("You cannot enter  DBS Expiry date as past date!");
+                 document.getElementById("<%= Inputdate2.ClientID %>").value = "";
+                return false;
+
+            }
+            return true;
+        }
+
+    </script>
+    <script type="text/javascript">
+        function checkTrainingExpiryDate() {
+
+            var dateString = document.getElementById("<%= Inputdate4.ClientID %>").value;
+            var myDate = new Date(dateString);
+            
+            var today = new Date();
+      
+            if (myDate < today) {
+               
+                alert("You cannot enter  Training Expiry date as past date!");
+                 document.getElementById("<%= Inputdate4.ClientID %>").value = "";
+                return false;
+
+            }
+            return true;
+        }
+
+    </script>
+        <script type="text/javascript">
+            function validateFileSize() {
+                var uploadControltraining = document.getElementById('<%= tfupld.ClientID %>');
+                
+                if (uploadControltraining.files[0].size > 2097152) {
+                    alert("Training certificate size should be leass than 2 Mb");
+                    document.getElementById("<%= tfupld.ClientID %>").value = "";
+                    return false;
+                }
+            }
+        </script>
+     <script type="text/javascript">
+         function validateFileSize1() {
+            
+                var uploadAddressProof = document.getElementById('<%= Adrupl.ClientID %>');
+             if (uploadAddressProof.files[0].size > 2097152) {
+                    alert("Address proof file size should be leass than 2 Mb");
+                    document.getElementById("<%= Adrupl.ClientID %>").value = "";
+                      return false;
+                  }
+                
+         }
+     </script>
+          
+<style type="text/css">
 
 .fileUpload {
     position: relative;
@@ -318,7 +468,7 @@
                                         <div class="fileUpload">
                                              <label class="uploadLabel">
                                                   <span>File Upload</span>
-                     <asp:FileUpload ID="ImageUpload" runat="server" class="uploadButton" onchange="showpreview(this);" />
+                     <asp:FileUpload ID="ImageUpload" accept=".png,.jpg,.jpeg,.gif"    runat="server" class="uploadButton" onchange="showpreview(this);" />
                                             </label>
 
         </div>
@@ -340,12 +490,13 @@
                             <div name="RGN" runat="server">
                               <div class="form-group">
                                  <label for="furl" id="PinNo" runat="server">NMC Pin No(If Applicable):</label>
-                                 <asp:TextBox ID="NMCPin" runat="server" class="form-control" placeholder="NMC Pin"></asp:TextBox>
+                                 <asp:TextBox ID="NMCPin" MaxLength="15" runat="server" class="form-control" placeholder="NMC Pin"></asp:TextBox>
                               </div>
                               <div class="form-group">
                                  <label for="turl" id="RenId" runat="server">Renewal Date(If Applicable):</label>
-                                  <input type="date" class="form-control"  id="RenewalInputdate" name="datemain" value="" runat="server"/>
-                                
+                                  <input type="date" class="form-control"  onmouseleave="checkRenewalDate()"  id="RenewalInputdate" name="datemain" value="" runat="server">
+
+                              
                               </div>
                              
                     </div>
@@ -370,20 +521,20 @@
                                  <div class="row">
                                     <div class="form-group col-md-6">
                                        <label for="fname">First Name:</label>
-                                       <asp:TextBox id="txtfirstname" class="form-control" runat="server" placeholder="Last Name" ></asp:TextBox>
+                                       <asp:TextBox id="txtfirstname" MaxLength="25" class="form-control" runat="server" placeholder="First Name" ></asp:TextBox>
                                         </div>
                                     <div class="form-group col-md-6">
                                        <label for="lname">Last Name:</label>
-                                        <asp:TextBox ID="txtlastname" class="form-control" runat="server" placeholder="Last Name"></asp:TextBox>
+                                        <asp:TextBox ID="txtlastname" MaxLength="25" class="form-control" runat="server" placeholder="Last Name"></asp:TextBox>
                                     </div>
                                     <div class="form-group col-md-6">
                                        <label for="add1">Email:</label>
-                                        <asp:TextBox ID="txtemail" class="form-control" runat="server" placeholder="Email"></asp:TextBox>
+                                        <asp:TextBox ID="txtemail"  class="form-control" runat="server" placeholder="Email"></asp:TextBox>
                                      
                                     </div>
                                     <div class="form-group col-md-6">
                                        <label for="mobno">Mobile Number:</label>
-                                        <asp:TextBox ID="txtmobileNumber" class="form-control" runat="server" placeholder="Mobile Number"></asp:TextBox>
+                                        <asp:TextBox ID="txtmobileNumber"  class="form-control" runat="server" placeholder="Mobile Number"></asp:TextBox>
                                     </div>
                                     <div class="form-group col-sm-12">
                                        <label>Nationality:</label>
@@ -395,7 +546,7 @@
 
                                     <div class="form-group col-md-6">
                                     <label for="altconno">Date of Birth:</label>
-                                    <input type="date" class="form-control" id="exampleInputdate" name="dateofbirth" value="" runat="server">
+                                    <input type="date" class="form-control" onmouseleave="checkDOB()" id="exampleInputdate" name="dateofbirth" value="" runat="server">
                               
                                     </div>
                                     <div class="form-group col-md-6">
@@ -413,22 +564,22 @@
                                  <div class="row">
                                     <div class="form-group col-md-12">
                                        <label for="uname">Address:</label>
-                                        <asp:TextBox ID="txtaddress" class="form-control" runat="server" placeholder="User Name"></asp:TextBox>
+                                        <asp:TextBox ID="txtaddress" MaxLength="30" class="form-control" runat="server" placeholder="Address"></asp:TextBox>
                                     </div>
                                     <div class="form-group col-md-6">
                                        <label for="pass">Street / City:</label>
-                                       <asp:TextBox ID="txtstreet" runat="server" class="form-control" placeholder="Street / City"></asp:TextBox>
+                                       <asp:TextBox ID="txtstreet" MaxLength="15" runat="server" class="form-control" placeholder="Street / City"></asp:TextBox>
                                     </div>
                                     <div class="form-group col-md-6">
-                                       <label for="rpass">County:</label>
-                                        <asp:DropDownList ID="county" class="form-control" runat="server">
+                                       <label for="rpass">Country:</label>
+                                        <asp:DropDownList ID="county"  class="form-control" runat="server">
                                             <asp:ListItem Text="Select" Value= “-1”></asp:ListItem>
                                             <asp:ListItem Text="Staffordshire" Value=”1”></asp:ListItem>
                                         </asp:DropDownList>
                                     </div>
                                       <div class="form-group col-md-6">
                                        <label for="pass">Postal Code:</label>
-                                       <asp:TextBox ID="txtpostcode" class="form-control" runat="server" placeholder="Post Code"></asp:TextBox>
+                                       <asp:TextBox ID="txtpostcode" MaxLength="15" class="form-control" runat="server" placeholder="Postal Code"></asp:TextBox>
                                           </div>
                                  </div>
                                <hr>
@@ -439,11 +590,11 @@
                                <div class="row">
                                <div class="form-group col-md-6">
                                        <label for="uname">National Insurance NO:</label>
-                                    <asp:TextBox ID="txtNI" runat="server" class="form-control"></asp:TextBox>
+                                    <asp:TextBox ID="txtNI" MaxLength="15" runat="server" placeholder="National Insurance NO" class="form-control"></asp:TextBox>
                                    </div>
                                 <div class="form-group col-md-6">
                                        <label for="uname">DBS Uniquie Number :</label>       
-                                    <asp:TextBox ID="txtDBS" runat="server" class="form-control"></asp:TextBox>
+                                    <asp:TextBox ID="txtDBS" MaxLength="15" runat="server" placeholder="DBS Uniquie Number" class="form-control"></asp:TextBox>
                                    </div>
                                      <div class="form-group col-md-6">
                                        <label for="uname">CRD/DBS Type :</label>     
@@ -456,12 +607,12 @@
                                    </div> 
                                    <div class="form-group col-md-6">
                                        <label for="uname">DBS Issue Date :</label>
-                                 <input type="date" class="form-control" id="Inputdate" runat="server" name="DBSIssueDate" value="">
+                                 <input type="date" class="form-control" onmouseleave="checkIssueDate()" id="Inputdate" runat="server" name="DBSIssueDate" value="">
                               
                                    </div>
                                    <div class="form-group col-md-6">
                                        <label for="uname">DBS Expiry Date :</label>
-                                 <input type="date" class="form-control" id="Inputdate2" runat="server" name="ExDate" value="">
+                                 <input type="date" class="form-control"  onmouseleave="checkExpiryDate()"  id="Inputdate2" runat="server" name="ExDate" value="">
                               
                                    </div>
                                    <div class="form-group col-md-6">
@@ -487,7 +638,7 @@
                                    </div>
                                    <div class="form-group col-md-6 custom_Formgroupcolor" runat="server" id="adrp" name="adrpu">
                                        <label for="uname" id="upl" runat="server" class="width100">Upload Proof of Address:</label>
-                                     <asp:FileUpload ID="Adrupl" runat="server" />
+                                     <asp:FileUpload ID="Adrupl"  onchange="validateFileSize1();" runat="server" />
                                    </div>
                                    <div class="form-group col-md-6">
                                        
@@ -501,12 +652,12 @@
                                    </div>
                                    <div class="form-group col-md-6" runat="server" id="IsDate">
                                        <label for="uname" runat="server" id="lbl_ISdate">Issue Date :</label>
-                                 <input type="date" class="form-control" runat="server" id="Inputdate3" name="trDate" value="2019-12-18">
+                                 <input type="date" class="form-control" runat="server"  onmouseleave="checkTrainingIssueDate()" id="Inputdate3" name="trDate" >
                               
                                    </div>
                                    <div class="form-group col-md-6" runat="server" id="ExDate">
                                        <label for="uname" runat="server" id="lbl_ExDate">Expiry Date :</label>
-                                 <input type="date" class="form-control" runat="server" id="Inputdate4" name="exDate" value="2019-12-18">
+                                 <input type="date" class="form-control" runat="server" onmouseleave="checkTrainingExpiryDate()" id="Inputdate4" name="exDate" >
                               
                                    </div>
                                    <div class="form-group col-md-6 custom_Formgroupcolor" runat="server" id="crtraining">
@@ -514,13 +665,16 @@
                                            Upload the training certificate:
                                        </label>         
 
-                                       <asp:FileUpload ID="tfupld" runat="server"/>
+                                       <asp:FileUpload ID="tfupld"  onchange="validateFileSize();" runat="server"/>
                                    </div>
                  
                                    </div>
        
              </ContentTemplate>
-        </asp:UpdatePanel>
+        </asp:UpdatePanel> 
+                                   
+       
+             
                                  <div class="checkbox">
                                     <label>
                                         <input class="mr-2" type="checkbox">Enable Two-Factor-Authentication</label>
@@ -528,7 +682,7 @@
                           <asp:UpdatePanel ID="UpdatePanel3" runat="server">
          <ContentTemplate>
              <div>
-                    <asp:Button ID="Staffadd" runat="server" class="btn btn-primary" Text="AddewUser" onclientclick="return validate()"   OnClick="Staffadd_Click" CausesValidation="False" />
+                    <asp:Button ID="Staffadd" runat="server" class="btn btn-primary" Text="AddewUser" onclientclick="s"   OnClick="Staffadd_Click" CausesValidation="False" />
                  </div>
                         </ContentTemplate>
         </asp:UpdatePanel>   

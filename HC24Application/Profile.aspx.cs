@@ -33,8 +33,8 @@ namespace HC24Application
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            // int id = Convert.ToInt32(Request["value"]);
-            Image1.ImageUrl = "~/ImageHandler.ashx?id=" + 1;
+            int id = Convert.ToInt32(Request["value"]);
+            Image1.ImageUrl = "~/ImageHandler.ashx?id=" + id;
         }
         public string GetDetails()
         {
@@ -50,13 +50,13 @@ namespace HC24Application
                     String Name = (Firstname + Lastname).ToString();
                     data += "<div class='text-center mt-3 pl-3 pr-3'><h4><b> " + Name + "</b></h4><p>" + dr["Position"] + "</p></div><hr><div class='iq-card-body'><div class='about-info m-0 p-0'><div class='row'>" +
                                   "<div class='col-4'>Email:</div>" +
-                                  "<div class='col-8'>" + dr["EmailAddress"] + "</div>" +
+                                  "<div class='col-8'>" + dr["EmailAdd"] + "</div>" +
                                   "<div class='col-4'>Mobile Number:</div>" +
-                                  "<div class='col-8'>" + dr["PhoneNumber"] + "</div>" +
+                                  "<div class='col-8'>" + dr["Phn"] + "</div>" +
                                   "<div class='col-4'>Nationality</div>" +
                                   "<div class='col-8'>" + dr["Nationality"] + "</div>" +
                                   "<div class='col-4'>Date of Birth</div>" +
-                                  "<div class='col-8'>" + dr["DateOfBirth"] + "</div>" +
+                                  "<div class='col-8'>" + dr["Dob"] + "</div>" +
                                   "<div class='col-4'>Gender</div>" +
                                    "<div class='col-8''>" + dr["Gender"] + "</div>" +
                               "</div>" +
@@ -91,8 +91,8 @@ namespace HC24Application
                                        "<div class='media-support-info ml-3'>" +
                                           "<h6>Address</h6>" +
                                           "<p class='mb-0'>" + dr["Address"] + "," + dr["Street"] + "</p>" +
-                                           "<p class='mb-0'>" + dr["PostCode"] + "</p>" +
-                                           "<p class='mb-0'>" + dr["County"] + "</p>" +
+                                           "<p class='mb-0'>" + dr["Postal"] + "</p>" +
+                                           "<p class='mb-0'>" + dr["Country"] + "</p>" +
                                        "</div>" +
                                     "</li>" +
                                  "</ul>" +
@@ -131,7 +131,7 @@ namespace HC24Application
                                            "<li>"+
                                        "<h6 class='float-left mb-1'>NI Number</h6>"+
                                        "<div class='d-inline-block w-100'>"+
-                                          "<p class='badge badge-primary'>"+dr["NInumbr"]+"</p>"+
+                                          "<p class='badge badge-primary'>"+dr["NationalInsNo"]+"</p>"+
                                        "</div>" +
                                     "</li>" +
                                       "</ul>" +
@@ -141,7 +141,7 @@ namespace HC24Application
                                            "<li>" +
                                        "<h6 class='float-left mb-1'>DBS Number</h6>" +
                                        "<div class='d-inline-block w-100'>" +
-                                          "<p class='badge badge-primary'>" + dr["DBSNumber"] + " </p>" +
+                                          "<p class='badge badge-primary'>" + dr["DBS"] + " </p>" +
                                        "</div>" +
                                     "</li>" +
                                       "</ul>" +
@@ -161,7 +161,7 @@ namespace HC24Application
                                             "<li>" +
                                         "<h6 class='float-left mb-1'>DBS Issue Date</h6>" +
                                         "<div class='d-inline-block w-100'>" +
-                                           "<p class='badge badge-primary'>"+dr["DBSIssueDate"] + "</p>" +
+                                           "<p class='badge badge-primary'>"+dr["DBSIssue"] + "</p>" +
                                         "</div>" +
                                      "</li>" +
                                        "</ul>" +
@@ -171,7 +171,7 @@ namespace HC24Application
                                             "<li>" +
                                         "<h6 class='float-left mb-1'>DBS Expiry Date</h6>" +
                                         "<div class='d-inline-block w-100'>" +
-                                          " <p class='badge badge-primary'>" + dr["DBSExpiryDate"] + "</p>" +
+                                          " <p class='badge badge-primary'>" + dr["DBSExpiry"] + "</p>" +
                                         "</div>" +
                                      "</li>" +
                                       " </ul>" +
@@ -181,7 +181,7 @@ namespace HC24Application
                                             "<li>" +
                                         "<h6 class='float-left mb-1'>Uk Full Driving Licence</h6>" +
                                         "<div class='d-inline-block w-100'>" +
-                                           "<p class='badge badge-primary'>"+dr["DrivingLicence"]+"</p>" +
+                                           "<p class='badge badge-primary'>"+dr["DrivingLic"]+"</p>" +
                                        " </div>" +
                                      "</li>" +
                                        "</ul>" +

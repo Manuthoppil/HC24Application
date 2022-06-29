@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
@@ -24,8 +25,9 @@ namespace HC24Application
             cls.connection();
             //retriving the images on the basis of id of uploaded 
             //images,by using the querysting valaues which comes from Defaut.aspx page
-            cls.query = "Select Image from [tbl_Image] where MatchingCode=1";
+            cls.query = "Select Image from [tbl_Image] where MatchingCode="+displayimgid;
             SqlCommand com = new SqlCommand(cls.query, cls.con);
+            //com.Parameters.AddWithValue("@Matching", SqlDbType.Int).Value = displayimgid;
             SqlDataReader dr = com.ExecuteReader();
             dr.Read();
             context.Response.BinaryWrite((Byte[])dr[0]);

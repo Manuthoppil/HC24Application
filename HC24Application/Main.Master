@@ -74,10 +74,14 @@
                      <li>
                         <a href="#doctor-info" class="iq-waves-effect collapsed" data-toggle="collapse" aria-expanded="false"><i class="ri-user-3-fill"></i><span>Staff Manager</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
                         <ul id="doctor-info" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
-                           <li><a href="StaffDetails.aspx"><i class="ri-file-list-fill"></i>All Staffs</a></li>
-                           <li><a href="AddStaff.aspx"><i class="ri-user-add-fill"></i> Add Staff</a></li>
-                           <li><a href="Stafflist.aspx"><i class="ri-profile-fill"></i>Staff Profile</a></li>
-                           <li><a href="profile-edit.html"><i class="ri-file-edit-fill"></i> Edit Profile</a></li>
+                           
+                            <li><a href="AddStaff.aspx"><i class="ri-user-add-fill"></i> Add Staff</a></li>
+                           <li><a href="Staffverification.aspx"><i class="ri-profile-fill"></i>Staff Verification</a></li>
+                           
+                            <li><a href="StaffDetails.aspx"><i class="ri-file-list-fill"></i>All Staffs</a></li>
+                           
+                            
+                            <li><a href="profile-edit.html"><i class="ri-file-edit-fill"></i> Edit Profile</a></li>
                         </ul>
                      </li>
                     <%-- <li><a href="calendar.html" class="iq-waves-effect"><i class="ri-calendar-event-fill"></i><span>Calendar</span></a></li>

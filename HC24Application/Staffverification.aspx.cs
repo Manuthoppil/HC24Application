@@ -41,7 +41,7 @@ namespace HC24Application
         {
             int rowIndex = ((sender as Button).NamingContainer as GridViewRow).RowIndex;
             int id = Convert.ToInt32(grdEmp.DataKeys[rowIndex].Values[0]);
-            Response.Redirect("Profile.aspx?value=" + id);
+            Response.Redirect("Profile.aspx?value=" + 9);
         }
     }
 }

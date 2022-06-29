@@ -21,7 +21,7 @@
                             <div class="table-responsive" id="data">
 
                                 <asp:GridView ID="grdEmp" runat="server"
-            DataKeyNames="MatchingCode"  CssClass="rowHover table auto-index custome_Table" RowStyle-CssClass="rowHover"
+            DataKeyNames="Staffid"  CssClass="rowHover table auto-index custome_Table" RowStyle-CssClass="rowHover"
             AutoGenerateColumns="False" AllowPaging="True" 
             PageSize="4" 
              
@@ -65,10 +65,10 @@
          </asp:TemplateField>--%>
            <asp:TemplateField HeaderText="Contact Number" HeaderStyle-HorizontalAlign="Center">
             <ItemTemplate>
-                 <%#Eval("PhoneNumber")%>
+                 <%#Eval("Phn")%>
             </ItemTemplate>
             <EditItemTemplate>
-                 <asp:TextBox ID="txtSal" runat="server" Text='<%#Eval("PhoneNumber") %>'></asp:TextBox>
+                 <asp:TextBox ID="txtSal" runat="server" Text='<%#Eval("Phn") %>'></asp:TextBox>
                 <asp:RequiredFieldValidator ID="rfvSal" runat="server" ErrorMessage="*" ForeColor="red" ControlToValidate="txtSal" Display="Dynamic" SetFocusOnError="True"></asp:RequiredFieldValidator>
              </EditItemTemplate>
               <HeaderStyle HorizontalAlign="Center" />             
@@ -76,10 +76,10 @@
 
              <asp:TemplateField HeaderText="EmailAddress" HeaderStyle-HorizontalAlign="Center">
             <ItemTemplate>
-                 <%#Eval("EmailAddress")%>
+                 <%#Eval("EmailAdd")%>
             </ItemTemplate>
             <EditItemTemplate>
-                 <asp:TextBox ID="txtEditAddress" runat="server" Text='<%#Eval("EmailAddress") %>'  TextMode="MultiLine"></asp:TextBox>
+                 <asp:TextBox ID="txtEditAddress" runat="server" Text='<%#Eval("EmailAdd") %>'  TextMode="MultiLine"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="rfvAddress" runat="server" ErrorMessage="*" ForeColor="red" ControlToValidate="txtEditAddress" Display="Dynamic" SetFocusOnError="True"></asp:RequiredFieldValidator>
              </EditItemTemplate>
               <HeaderStyle HorizontalAlign="Center" />            
@@ -96,10 +96,10 @@
          </asp:TemplateField>
              <asp:TemplateField HeaderText="County" HeaderStyle-HorizontalAlign="Center">
             <ItemTemplate>
-                 <%#Eval("County")%>
+                 <%#Eval("Country")%>
             </ItemTemplate>
             <EditItemTemplate>
-                 <asp:TextBox ID="txtEditAddress" runat="server" Text='<%#Eval("County") %>'  TextMode="MultiLine"></asp:TextBox>
+                 <asp:TextBox ID="txtEditAddress" runat="server" Text='<%#Eval("Country") %>'  TextMode="MultiLine"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="rfvAddress" runat="server" ErrorMessage="*" ForeColor="red" ControlToValidate="txtEditAddress" Display="Dynamic" SetFocusOnError="True"></asp:RequiredFieldValidator>
              </EditItemTemplate>
               <HeaderStyle HorizontalAlign="Center" />            
@@ -116,15 +116,15 @@
          </asp:TemplateField>
              <asp:TemplateField HeaderText="PostCode" HeaderStyle-HorizontalAlign="Center">
             <ItemTemplate>
-                 <%#Eval("PostCode")%>
+                 <%#Eval("Postal")%>
             </ItemTemplate>
             <EditItemTemplate>
-                 <asp:TextBox ID="txtEditAddress" runat="server" Text='<%#Eval("PostCode") %>'  TextMode="MultiLine"></asp:TextBox>
+                 <asp:TextBox ID="txtEditAddress" runat="server" Text='<%#Eval("Postal") %>'  TextMode="MultiLine"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="rfvAddress" runat="server" ErrorMessage="*" ForeColor="red" ControlToValidate="txtEditAddress" Display="Dynamic" SetFocusOnError="True"></asp:RequiredFieldValidator>
              </EditItemTemplate>
               <HeaderStyle HorizontalAlign="Center" />            
          </asp:TemplateField>
-                   <asp:TemplateField HeaderText="Action" HeaderStyle-CssClass="custome_Heading"  HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center">
+                   <%--<asp:TemplateField HeaderText="Action" HeaderStyle-CssClass="custome_Heading"  HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center">
             <ItemTemplate>             
                 <asp:ImageButton ID="imgEdit" runat="server" CommandName="Edit"  ImageUrl="~/images/vf.jpg" ToolTip="Edit" CausesValidation="false" Width="100px"/>
             </ItemTemplate>
@@ -142,10 +142,10 @@
             </ItemTemplate>           
              <HeaderStyle HorizontalAlign="Center" />
              <ItemStyle HorizontalAlign="Center" />
-         </asp:TemplateField>   
-             <asp:TemplateField HeaderText="Delete" HeaderStyle-CssClass="custome_Heading"  HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center">
+         </asp:TemplateField>   --%>
+             <asp:TemplateField HeaderText="Need To Verify" HeaderStyle-CssClass="custome_Heading"  HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center">
                <ItemTemplate>
-            <asp:Button Text="GetValue" runat="server" ID="verify" OnClick="verify_Click" />
+            <asp:Button Text="Verify" runat="server" ID="verify" OnClick="verify_Click" CssClass="Button_Action" />
         </ItemTemplate>
                </asp:TemplateField>
                   </Columns>        

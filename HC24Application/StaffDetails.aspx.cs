@@ -33,7 +33,7 @@ namespace HC24Application
                         string Firstname = dr["FirstName"].ToString();
                         string Lastname = dr["LastName"].ToString();
                         String Name = (Firstname + Lastname).ToString();
-                        data += "<tr><td>" + dr["ApplicationId"] + "</td><td>" + Name + "</td><td>" + dr["Position"] + "</td><td>" + dr["PhoneNumber"] + "</td><td>" + dr["EmailAddress"] + "</td><td>" + dr["Nationality"] + "</td><td>" + dr["County"] + "</td><td>" + dr["Address"] + "</td><td>" + dr["PostCode"] + "</td></tr>";
+                        data += "<tr><td>" + dr["ApplicationNo"] + "</td><td>" + Name + "</td><td>" + dr["Position"] + "</td><td>" + dr["Phn"] + "</td><td>" + dr["EmailAdd"] + "</td><td>" + dr["Nationality"] + "</td><td>" + dr["Country"] + "</td><td>" + dr["Address"] + "</td><td>" + dr["Postal"] + "</td></tr>";
 
                     }
                 }
