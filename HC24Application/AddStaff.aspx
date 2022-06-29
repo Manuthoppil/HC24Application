@@ -449,8 +449,8 @@
 <form id="form1" runat="server">
 <asp:ScriptManager ID="ScriptManager1" runat="server">
 
-    </asp:ScriptManager>
-
+   
+       </asp:ScriptManager>
    <div class="row">
     <div class="col-lg-3">
 
@@ -584,9 +584,9 @@
                                  </div>
                                <hr>
                                 <h5 class="mb-3 heading_Main">Other Details</h5>
-                                          <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                              
+                 <asp:UpdatePanel ID="UpdatePanel1" runat="server">
          <ContentTemplate>
-                 
                                <div class="row">
                                <div class="form-group col-md-6">
                                        <label for="uname">National Insurance NO:</label>
@@ -627,29 +627,46 @@
                            </div>
                            
                                    </div>
+                            
                                    <div class="form-group col-md-6">
                                  <label for="uname">Proof of Address:</label>
+                      
                                  <asp:DropDownList ID="DrpAddress"  runat="server" class="form-control" OnSelectedIndexChanged="DrpAddress_SelectedIndexChanged" AutoPostBack="true">
                                          <asp:ListItem Text="Select" Value= “-1”></asp:ListItem>
                                             <asp:ListItem Text="YES" Value=”1”></asp:ListItem>
                                             <asp:ListItem Text="NO" Value=”2”></asp:ListItem>
                                  </asp:DropDownList>
-                                       
+                                 
                                    </div>
+                
+
                                    <div class="form-group col-md-6 custom_Formgroupcolor" runat="server" id="adrp" name="adrpu">
                                        <label for="uname" id="upl" runat="server" class="width100">Upload Proof of Address:</label>
+                                       
+                                            
                                      <asp:FileUpload ID="Adrupl"  onchange="validateFileSize1();" runat="server" />
+                       
                                    </div>
+                          
+                           
                                    <div class="form-group col-md-6">
                                        
                                  <label for="uname">Training Attented Or Not:</label>
-                                 <asp:DropDownList ID="Drptraining"  runat="server" class="form-control" OnSelectedIndexChanged="Drptraining_SelectedIndexChanged" AutoPostBack="true">
+                           <%--  <asp:UpdatePanel ID="UpdatePanel4" runat="server">
+         <ContentTemplate>--%>
+                                  <asp:DropDownList ID="Drptraining"  runat="server" class="form-control" OnSelectedIndexChanged="Drptraining_SelectedIndexChanged" AutoPostBack="true">
                                  <asp:ListItem Text="Select" Value= “-1”></asp:ListItem>
                                  <asp:ListItem Text="YES" Value=”1”></asp:ListItem>
                                  <asp:ListItem Text="NO" Value=”2”></asp:ListItem>
                                  </asp:DropDownList>
-                                    
+                            <%--</ContentTemplate>
+                                 <Triggers>
+        <asp:AsyncPostBackTrigger ControlID="Drptraining" EventName="SelectedIndexChanged" />
+    </Triggers>--%>
+      <%--  </asp:UpdatePanel>--%>
                                    </div>
+
+             
                                    <div class="form-group col-md-6" runat="server" id="IsDate">
                                        <label for="uname" runat="server" id="lbl_ISdate">Issue Date :</label>
                                  <input type="date" class="form-control" runat="server"  onmouseleave="checkTrainingIssueDate()" id="Inputdate3" name="trDate" >
@@ -667,11 +684,10 @@
 
                                        <asp:FileUpload ID="tfupld"  onchange="validateFileSize();" runat="server"/>
                                    </div>
-                 
-                                   </div>
-       
+                  
+                                   </div> 
              </ContentTemplate>
-        </asp:UpdatePanel> 
+        </asp:UpdatePanel>
                                    
        
              
@@ -682,7 +698,7 @@
                           <asp:UpdatePanel ID="UpdatePanel3" runat="server">
          <ContentTemplate>
              <div>
-                    <asp:Button ID="Staffadd" runat="server" class="btn btn-primary" Text="AddewUser" onclientclick="s"   OnClick="Staffadd_Click" CausesValidation="False" />
+                    <asp:Button ID="Staffadd" runat="server" class="btn btn-primary" Text="AddewUser" onclientclick="return validate()"   OnClick="Staffadd_Click" CausesValidation="False" />
                  </div>
                         </ContentTemplate>
         </asp:UpdatePanel>   
@@ -695,7 +711,7 @@
 
                      </div>
                   </div>
-
+  
 
             </form>
 </asp:Content>

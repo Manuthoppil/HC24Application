@@ -189,19 +189,7 @@ namespace HC24Application
                                 "</div>" +
                                "</div>" +
                             "</div>" +
-                   "</div>" +
-                   "<div class='col-md-12'><div class='iq-card'><div class='iq-card-header d-flex justify-content-between'><div class='iq-header-title'>" +
-                   "<h4 class='card-title'>Education</h4></div></div><div class='iq-card-body'>" +
-                   "<table class='table mb-0 table-borderless'><thead><tr><th scope='col'>Year</th><th scope='col'>Degree</th><th scope='col'>Institute</th>" +
-                   "" +
-                   "" +
-                   "" +
-                   "" +
-                   "" +
-                   "" +
-                   "" +
-                   "" +
-                   "";
+                   "</div>";
 
                 }
             }
