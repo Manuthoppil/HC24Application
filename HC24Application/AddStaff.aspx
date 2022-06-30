@@ -6,18 +6,18 @@
          function showpreview(input) {
              var uploadControlImage = document.getElementById('<%=ImageUpload.ClientID %>');
                 
-             if (uploadControlImage.files[0].size > 2097152) {
+             if (uploadControlImage.files[0].size > 2097152)
+             {
                  alert("Profile image size should be leass than 2 Mb");
-
-
                  document.getElementById('ImageUpload').src = "images/user/11.png";
                  return false;
              }
              else {
-                 if (input.files && input.files[0]) {
-
+                 if (input.files && input.files[0])
+                 {
                      var reader = new FileReader();
-                     reader.onload = function (e) {
+                     reader.onload = function (e)
+                     {
                          $('#imgpreview').css('visibility', 'visible');
                          $('#imgpreview').attr('src', e.target.result);
                      }

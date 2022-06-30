@@ -19,8 +19,5 @@
                       <%=GetAddress()%>
                   </div>
                    <%=GetOtherDetails()%>
-        
-
-
                </div>
 </asp:Content>
