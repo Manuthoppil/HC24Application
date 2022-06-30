@@ -76,6 +76,9 @@ namespace HC24Application
             {
                 foreach (DataRow dr in dt.Rows)
                 {
+
+                    
+
                     data += "<div class='iq-card'>" +
                            "<div class='iq-card-header d-flex justify-content-between'>" +
                                  "<div class='iq-header-title'>" +
@@ -117,21 +120,28 @@ namespace HC24Application
             {
                 foreach (DataRow dr in dt.Rows)
                 {
-                    data += "<div class='col-lg-7'>"+
-                      "<div class='container iq-card'>"+
+
+                    DateTime dtt = Convert.ToDateTime(dr["DBSIssue"]);
+                    DateTime dateonly = dtt.Date;
+
+                    DateTime dateex=Convert.ToDateTime(dr["DBSExpiry"]);
+                    DateTime dateexonly=dateex.Date;
+
+                    data += "<div class='col-lg-7'>" +
+                      "<div class='container iq-card'>" +
                           "<div class='iq-card-header d-flex justify-content-between'>" +
                                  "<div class='iq-header-title'>" +
                                     "<h4 class='card-title'>Other Details</h4>" +
-                                 "</div>"+
-                              "</div>"+
-                          "<div class='iq-card-body'>"+                    
-                            "<div class='row'>"+
-                                "<div class='col-6'>"+
-                                    "<ul class='list-inline m-0 p-0'>"+
-                                           "<li>"+
-                                       "<h6 class='float-left mb-1'>NI Number</h6>"+
-                                       "<div class='d-inline-block w-100'>"+
-                                          "<p class='badge badge-primary'>"+dr["NationalInsNo"]+"</p>"+
+                                 "</div>" +
+                              "</div>" +
+                          "<div class='iq-card-body'>" +
+                            "<div class='row'>" +
+                                "<div class='col-6'>" +
+                                    "<ul class='list-inline m-0 p-0'>" +
+                                           "<li>" +
+                                       "<h6 class='float-left mb-1'>NI Number</h6>" +
+                                       "<div class='d-inline-block w-100'>" +
+                                          "<p class='badge badge-primary'>" + dr["NationalInsNo"] + "</p>" +
                                        "</div>" +
                                     "</li>" +
                                       "</ul>" +
@@ -149,10 +159,10 @@ namespace HC24Application
                                         "<div class='col-6'>" +
                                         "<ul class='list-inline m-0 p-0'>" +
                                            "<li>" +
-                                       "<h6 class='float-left mb-1'>DBS Type</h6>"+
+                                       "<h6 class='float-left mb-1'>DBS Type</h6>" +
                                        "<div class='d-inline-block w-100'>" +
                                           "<p class='badge badge-primary'>" + dr["DBSType"] + "</p>" +
-                                       "</div> "+
+                                       "</div> " +
                                      "</li> " +
                                        "</ul> " +
                                         "</div> " +
@@ -161,7 +171,7 @@ namespace HC24Application
                                             "<li>" +
                                         "<h6 class='float-left mb-1'>DBS Issue Date</h6>" +
                                         "<div class='d-inline-block w-100'>" +
-                                           "<p class='badge badge-primary'>"+dr["DBSIssue"] + "</p>" +
+                                           "<p class='badge badge-primary'>" + dateonly.ToString("dd/mm/yyyy")+ "</p>" +
                                         "</div>" +
                                      "</li>" +
                                        "</ul>" +
@@ -171,7 +181,7 @@ namespace HC24Application
                                             "<li>" +
                                         "<h6 class='float-left mb-1'>DBS Expiry Date</h6>" +
                                         "<div class='d-inline-block w-100'>" +
-                                          " <p class='badge badge-primary'>" + dr["DBSExpiry"] + "</p>" +
+                                          " <p class='badge badge-primary'>" + dateex.ToString("dd/mm/yyyy") + "</p>" +
                                         "</div>" +
                                      "</li>" +
                                       " </ul>" +

@@ -106,7 +106,6 @@ namespace HC24Application
                 DateTime myDate = Convert.ToDateTime(exampleInputdate.Value);
                 DateTime date = Convert.ToDateTime(myDate);
                 int DateOfBirth = date.Year;
-              
                 int year1 = Convert.ToInt32(DateOfBirth);
                 int year2 = Convert.ToInt32(year);
                 int age = year2 - year1;
@@ -126,7 +125,7 @@ namespace HC24Application
                     staff.EmailId = txtemail.Text;
                     staff.PhoneNumber = txtmobileNumber.Text;
                     staff.Nationality = Drpnationality.SelectedItem.Text;
-                staff.ApplicationNo = AppLabel.Text;
+                    staff.ApplicationNo = AppLabel.Text;
                     string datea = Request.Form[exampleInputdate.UniqueID];
                     DateTime dt = DateTime.Parse(datea);
                     string dateofbirth = dt.ToString("dd-MMM-yyyy");
