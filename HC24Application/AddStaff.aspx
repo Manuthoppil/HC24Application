@@ -2,8 +2,6 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-   hjgjhgjhgjhghj
-    
     <script type="text/javascript">
          function showpreview(input) {
              var uploadControlImage = document.getElementById('<%=ImageUpload.ClientID %>');
