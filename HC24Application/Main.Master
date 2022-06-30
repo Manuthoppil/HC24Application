@@ -60,10 +60,7 @@
                      <li>
                         <a href="dashboard-1.html" class="iq-waves-effect"><i class="ri-home-8-fill"></i><span>HC24 Dashboard </span></a>
                      </li>
-                    
-                    
-                     
-                   
+
                     <%-- <li>
                         <a href="#mailbox" class="iq-waves-effect collapsed" data-toggle="collapse" aria-expanded="false"><i class="ri-mail-open-fill"></i><span>Email</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
                         <ul id="mailbox" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">

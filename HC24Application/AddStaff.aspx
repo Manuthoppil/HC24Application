@@ -4,8 +4,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <script type="text/javascript">
          function showpreview(input) {
-             var uploadControlImage = document.getElementById('<%=ImageUpload.ClientID %>');
-                
+             var uploadControlImage = document.getElementById('<%=ImageUpload.ClientID %>');    
              if (uploadControlImage.files[0].size > 2097152)
              {
                  alert("Profile image size should be leass than 2 Mb");
