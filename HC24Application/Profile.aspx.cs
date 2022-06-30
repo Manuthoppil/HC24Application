@@ -111,6 +111,8 @@ namespace HC24Application
 
 
         }
+
+
         public string GetOtherDetails() {
 
             string data = string.Empty;
