@@ -48,6 +48,6 @@ namespace Appprop
         public string NmcPin { get; set; }
         public string RenewlDate { get; set; }
         public int Matching { get; set; }
-
+        public int Staffid { get; set; }
     }
 }

@@ -85,6 +85,7 @@ namespace BLL
         
         
         }
+
         public int PositionInsert(StaffSchema sfs) {
 
             try 
@@ -98,6 +99,23 @@ namespace BLL
                 throw ex;
             }
         
+        }
+        public DataTable Staff_Verfication(StaffSchema sfs)
+        {
+
+            try
+            {
+                Staff objStaff = new Staff();
+                return objStaff.GetVerfDetails(sfs);
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+
         }
     }
 }

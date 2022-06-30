@@ -85,6 +85,37 @@ namespace DAL
 
 
         }
+        public DataTable GetVerfDetails(StaffSchema stf)
+        {
+
+            try
+            {
+                using (cmd = new SqlCommand("Select_StaffVerfication", con))
+                {
+                    con.Open();
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@StaffId", stf.Staffid);
+                    SqlDataAdapter sda = new SqlDataAdapter(cmd);
+                    dt = new DataTable();
+                    sda.Fill(dt);
+                    return dt;
+                    con.Close();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+
+            }
+            finally
+            {
+
+
+            }
+
+
+        }
         public int InsertAddress(StaffSchema stf) {
 
             try
