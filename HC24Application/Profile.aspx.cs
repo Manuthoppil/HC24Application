@@ -99,8 +99,8 @@ namespace HC24Application
                                        "<div class='media-support-info ml-3'>" +
                                           "<h6>Address</h6>" +
                                           "<p class='mb-0'>" + dr["Address"] + "," + dr["Street"] + "</p>" +
-                                           "<p class='mb-0'>" + dr["Postal"] + "</p>" +
-                                           "<p class='mb-0'>" + dr["Country"] + "</p>" +
+                                           "<p class='mb-0'>" + dr["Postal"] +","+ dr["Country"]+ "</p>" +
+                                           //"<p class='mb-0'>" +  + "</p>" +
                                        "</div>" +
                                     "</li>" +
                                  "</ul>" +
@@ -180,7 +180,7 @@ namespace HC24Application
                                             "<li>" +
                                         "<h6 class='float-left mb-1'>DBS Issue Date</h6>" +
                                         "<div class='d-inline-block w-100'>" +
-                                           "<p class='badge badge-primary'>" + dateonly.ToString("dd/mm/yyyy")+ "</p>" +
+                                           "<p class='badge badge-primary'>" + dateonly.ToString("dd/mm/yyyy") + "</p>" +
                                         "</div>" +
                                      "</li>" +
                                        "</ul>" +
@@ -200,40 +200,114 @@ namespace HC24Application
                                             "<li>" +
                                         "<h6 class='float-left mb-1'>Uk Full Driving Licence</h6>" +
                                         "<div class='d-inline-block w-100'>" +
-                                           "<p class='badge badge-primary'>"+dr["DrivingLic"]+"</p>" +
+                                           "<p class='badge badge-primary'>" + dr["DrivingLic"] + "</p>" +
                                        " </div>" +
                                      "</li>" +
                                        "</ul>" +
-                                    "</div>" +   
+                                    "</div>" +
                                 "</div>" +
-                               "</div>" +
-                            "</div>" +
-                   "</div>";
+                                 "</div>" +
+                               "</div>";
+                           
+                            if (dr["TrainingAttend"].ToString() == "NO")
+                    {
+                        data += "<div class='col-lg-7'>" +
+                            "<div class='iq-card'>" +
+                           "<div class='iq-card-header d-flex justify-content-between'>" +
+                                 "<div class='iq-header-title'>" +
+                                    "<h4 class='card-title'>Training Document</h4>" +
+                                 "</div>" +
+                              "</div>" +
+                        "<div class='iq-card-header d-flex justify-content-between'>" +
+                           "<div class='iq-header-title'>" +
+                               "<div class='iq-card-body'>" +
+                                 "<ul class='speciality-list m-0 p-0'>" +
+                                    "<li class='d-flex mb-4 align-items-center'>" +
+                                       "<div class='user-img img-fluid'><a href = '#' class='iq-bg-primary'><i class='ri-award-fill'></i></a></div>" +
+                                       "<div class='media-support-info ml-3'>" +
+                                          "<h6>Training</h6>" +
+                                         "<p class='badge badge-primary'>Training was not attended</p>" +
 
-                }
-            }
+                                       "</div>" +
+                                    "</li>" +
+                                 "</ul>" +
+                              "</div>" +
+                           "</div>" +
+                        "</div>" +
+                         "</div>" +
+                     "</div>";
 
-            return data;
+                    }
+                    else
+                    {
+                        DateTime dateTimeIssue = Convert.ToDateTime(dr["Issuedate"]);
+                        string dateIssue = dateTimeIssue.ToString("dd/MM/yyyy");
+                        DateTime dateTimeExpire = Convert.ToDateTime(dr["Issuedate"]);
+                        string dateExpire = dateTimeExpire.ToString("dd/MM/yyyy");
 
 
+                        string doc = dr["TrainingDoc"].ToString();
+                        string path = "Files/Training/" + doc + "";
 
-        }
 
-        public string GetProofDocuments()
-        {
+                        data += 
+                            "<div class='container iq-card'>" +
+                           "<div class='iq-card-header d-flex justify-content-between'>" +
+                                 "<div class='iq-header-title'>" +
+                                    "<h4 class='card-title'>Training Document</h4>" +
+                                 "</div>" +
+                              "</div>" +
+                               "<div class='iq-card-body'>" +
+                                 "<ul class='speciality-list m-0 p-0'>" +
+                                    "<li class='d-flex mb-4 align-items-center'>" +
 
-            string data = string.Empty;
-            StaffSchema stf = new StaffSchema();
-            StaffBLL staff = new StaffBLL();
-            stf.Staffid = Convert.ToInt32(Session["id"]);
-            dt = staff.Staff_Verfication(stf);
-            if (dt.Rows.Count > 0)
-            {
-                foreach (DataRow dr in dt.Rows)
-                {
+                                    "<div class='col-3'>" +
+                                            "<ul class='list-inline m-0 p-0'>" +
+                                            "<li>" +
+                                      
+                                        "<div class='d-inline-block w-100'>" +
+
+                                     
+                                          "<h6>Issue Date</h6>" +
+                                           "<p class='mb-0'>" + dateIssue + "</p>" +
+
+
+                                            "</div>" +
+                                     "</li>" +
+                                       "</ul>" +
+                                        "</div>" +
+                                         "<div class='col-4'>" +
+                                            "<ul class='list-inline m-0 p-0'>" +
+                                            "<li>" +
+                                        "<div class='d-inline-block w-100'>" +
+                                            "<h6>Expire Date</h6>" +
+                                           "<p class='mb-0'>" + dateExpire + "</p>" +
+                                                "</div>" +
+                                     "</li>" +
+                                       "</ul>" +
+                                        "</div>" +
+                                          "<div class='col-4'>" +
+                                           "<ul class='list-inline m-0 p-0'>" +
+                                            "<li>" +
+                                        "<div class='d-inline-block w-100'>" +
+                                                "<h6>Training Document</h6>" +
+                                         "<a href='" + path + "' class='btn btn-primary button_magin' target='_blank'>Certificate</a>" +
+                                        "</div>" +
+                                     "</li>" +
+                                       "</ul>" +
+                                        "</div>" +
+                                    "</li>" +
+                                 "</ul>" +
+                                  
+                        "</div>" +
+                       
+                     "</div>";
+                    }
+
                     if (dr["ProofOfAddress"].ToString() == "NO")
                     {
-                        data += "<div class='iq-card'>" +
+                        data += "<div class='col-lg-7'>" +
+                            "<div class='iq-card'>" +
                            "<div class='iq-card-header d-flex justify-content-between'>" +
                                  "<div class='iq-header-title'>" +
                                     "<h4 class='card-title'>Address Proof Document</h4>" +
@@ -255,7 +329,8 @@ namespace HC24Application
                               "</div>" +
                            "</div>" +
                         "</div>" +
-                     "</div>";
+                         "</div>" ;
+                    
 
                     }
                     else
@@ -286,7 +361,8 @@ namespace HC24Application
                         //        "</ div > " +
                         //    "</ div > " + "";
 
-                        data += "<div class='iq-card'>" +
+                        data += 
+                            "<div class='iq-card'>" +
                            "<div class='iq-card-header d-flex justify-content-between'>" +
                                  "<div class='iq-header-title'>" +
                                     "<h4 class='card-title'>Address Proof Document</h4>" +
@@ -297,19 +373,24 @@ namespace HC24Application
                                "<div class='iq-card-body'>" +
                                  "<ul class='speciality-list m-0 p-0'>" +
                                     "<li class='d-flex mb-4 align-items-center'>" +
-                                       "<div class='user-img img-fluid'><a href = '#' class='iq-bg-primary'><i class='ri-award-fill'></i></a></div>" +
+                                    
                                        "<div class='media-support-info ml-3'>" +
                                           "<h6>Document</h6>" +
                                          "<a href='" + path + "' class='btn btn-primary float-right' target='_blank'>Proof Of Address</a>" +
-
                                        "</div>" +
                                     "</li>" +
                                  "</ul>" +
                               "</div>" +
                            "</div>" +
                         "</div>" +
+                     "</div>" +
                      "</div>";
+                       
                     }
+
+
+
+
                 }
             }
 
@@ -319,96 +400,200 @@ namespace HC24Application
 
         }
 
+        //public string GetProofDocuments()
+        //{
 
-        public string GetProofTraining()
-        {
+        //    string data = string.Empty;
+        //    StaffSchema stf = new StaffSchema();
+        //    StaffBLL staff = new StaffBLL();
+        //    stf.Staffid = Convert.ToInt32(Session["id"]);
+        //    dt = staff.Staff_Verfication(stf);
+        //    if (dt.Rows.Count > 0)
+        //    {
+        //        foreach (DataRow dr in dt.Rows)
+        //        {
+        //            if (dr["ProofOfAddress"].ToString() == "NO")
+        //            {
+        //                data += "<div class='iq-card'>" +
+        //                   "<div class='iq-card-header d-flex justify-content-between'>" +
+        //                         "<div class='iq-header-title'>" +
+        //                            "<h4 class='card-title'>Address Proof Document</h4>" +
+        //                         "</div>" +
+        //                      "</div>" +
+        //                "<div class='iq-card-header d-flex justify-content-between'>" +
+        //                   "<div class='iq-header-title'>" +
+        //                       "<div class='iq-card-body'>" +
+        //                         "<ul class='speciality-list m-0 p-0'>" +
+        //                            "<li class='d-flex mb-4 align-items-center'>" +
+        //                               "<div class='user-img img-fluid'><a href = '#' class='iq-bg-primary'><i class='ri-award-fill'></i></a></div>" +
+        //                               "<div class='media-support-info ml-3'>" +
+        //                                  "<h6>Document</h6>" +
+        //                                 "<p class='badge badge-primary'>No records Found</p>" +
 
-            string data = string.Empty;
-            StaffSchema stf = new StaffSchema();
-            StaffBLL staff = new StaffBLL();
-            stf.Staffid = Convert.ToInt32(Session["id"]);
-            dt = staff.Staff_Verfication(stf);
-            if (dt.Rows.Count > 0)
-            {
-                foreach (DataRow dr in dt.Rows)
-                {
-                    if (dr["TrainingAttend"].ToString() == "NO")
-                    {
-                        data += "<div class='iq-card'>" +
-                           "<div class='iq-card-header d-flex justify-content-between'>" +
-                                 "<div class='iq-header-title'>" +
-                                    "<h4 class='card-title'>Training Document</h4>" +
-                                 "</div>" +
-                              "</div>" +
-                        "<div class='iq-card-header d-flex justify-content-between'>" +
-                           "<div class='iq-header-title'>" +
-                               "<div class='iq-card-body'>" +
-                                 "<ul class='speciality-list m-0 p-0'>" +
-                                    "<li class='d-flex mb-4 align-items-center'>" +
-                                       "<div class='user-img img-fluid'><a href = '#' class='iq-bg-primary'><i class='ri-award-fill'></i></a></div>" +
-                                       "<div class='media-support-info ml-3'>" +
-                                          "<h6>Training</h6>" +
-                                         "<p class='badge badge-primary'>Training was not attended</p>" +
+        //                               "</div>" +
+        //                            "</li>" +
+        //                         "</ul>" +
+        //                      "</div>" +
+        //                   "</div>" +
+        //                "</div>" +
+        //             "</div>";
 
-                                       "</div>" +
-                                    "</li>" +
-                                 "</ul>" +
-                              "</div>" +
-                           "</div>" +
-                        "</div>" +
-                     "</div>";
+        //            }
+        //            else
+        //            {
+        //                string doc = dr["AddressDoc"].ToString();
+        //                string path = "Files/ProofOfAddress/" + doc + "";
+        //                //                        data += "<div class='col-lg-7'> " +
+        //                //    "<div class='container iq-card'>  " +
+        //                //        "<div class='iq-card-header d-flex justify-content-between'>  " +
+        //                //            "<div class='iq-header-title'>  " +
+        //                //                "<h4 class='card-title'>Proof Of Address</h4>" +
+        //                //                "</ div > " +
+        //                //            "</ div > " +
+        //                //        "<div class='iq-card-body'> " +
+        //                //            "<div class='row'>" +
+        //                //                "<div class='col-6'> " +
+        //                //                    "<ul class='list-inline m-0 p-0'>" +
+        //                //                        " <li> " +
+        //                //                            "<h6 class='float-left mb-1'>Document</h6>" +
+        //                //                            "<div class='d-inline-block w-100'>  " +
+        //                //                                "<a href='" + path + "' class='btn btn-primary float-right' target='_blank'>Proof Of Address</a>" +
+        //                //                               "</ div > " +
+        //                //                            "  </ li > " +
+        //                //                        "</ ul > " +
+        //                //                    "</ div > " +
+        //                //"</ div > " +
+        //                //            "</ div > " +
+        //                //        "</ div > " +
+        //                //    "</ div > " + "";
 
-                    }
-                    else
-                    {
-                        DateTime dateTimeIssue = Convert.ToDateTime(dr["Issuedate"]);
-                        string dateIssue = dateTimeIssue.ToString("dd/MM/yyyy");
-                        DateTime dateTimeExpire = Convert.ToDateTime(dr["Issuedate"]);
-                        string dateExpire = dateTimeExpire.ToString("dd/MM/yyyy");
+        //                data += "<div class='iq-card'>" +
+        //                   "<div class='iq-card-header d-flex justify-content-between'>" +
+        //                         "<div class='iq-header-title'>" +
+        //                            "<h4 class='card-title'>Address Proof Document</h4>" +
+        //                         "</div>" +
+        //                      "</div>" +
+        //                "<div class='iq-card-header d-flex justify-content-between'>" +
+        //                   "<div class='iq-header-title'>" +
+        //                       "<div class='iq-card-body'>" +
+        //                         "<ul class='speciality-list m-0 p-0'>" +
+        //                            "<li class='d-flex mb-4 align-items-center'>" +
+        //                               "<div class='user-img img-fluid'><a href = '#' class='iq-bg-primary'><i class='ri-award-fill'></i></a></div>" +
+        //                               "<div class='media-support-info ml-3'>" +
+        //                                  "<h6>Document</h6>" +
+        //                                 "<a href='" + path + "' class='btn btn-primary float-right' target='_blank'>Proof Of Address</a>" +
 
+        //                               "</div>" +
+        //                            "</li>" +
+        //                         "</ul>" +
+        //                      "</div>" +
+        //                   "</div>" +
+        //                "</div>" +
+        //             "</div>";
+        //            }
+        //        }
+        //    }
 
-                        string doc = dr["TrainingDoc"].ToString();
-                        string path = "Files/Training/" + doc + "";
-
-
-                        data += "<div class='iq-card'>" +
-                           "<div class='iq-card-header d-flex justify-content-between'>" +
-                                 "<div class='iq-header-title'>" +
-                                    "<h4 class='card-title'>Training Document</h4>" +
-                                 "</div>" +
-                              "</div>" +
-                        "<div class='iq-card-header d-flex justify-content-between'>" +
-                           "<div class='iq-header-title'>" +
-                               "<div class='iq-card-body'>" +
-                                 "<ul class='speciality-list m-0 p-0'>" +
-                                    "<li class='d-flex mb-4 align-items-center'>" +
-                                       "<div class='user-img img-fluid'><a href = '#' class='iq-bg-primary'><i class='ri-award-fill'></i></a></div>" +
-                                       "<div class='media-support-info ml-3'>" +
-                                          "<h6>Issue Date</h6>" +
-                                           "<p class='mb-0'>" + dateIssue + "</p>" +
-                                            "<h6>Expire Date</h6>" +
-                                           "<p class='mb-0'>" + dateExpire + "</p>" +
-                                             "<h6>Training Document</h6>" +
-
-
-
-                                         "<a href='" + path + "' class='btn btn-primary float-right' target='_blank'>Training Document</a>" +
-
-                                       "</div>" +
-                                    "</li>" +
-                                 "</ul>" +
-                              "</div>" +
-                           "</div>" +
-                        "</div>" +
-                     "</div>";
-                    }
-                }
-            }
-
-            return data;
+        //    return data;
 
 
 
-        }
+        //}
+
+
+        //public string GetProofTraining()
+        //{
+
+        //    string data = string.Empty;
+        //    StaffSchema stf = new StaffSchema();
+        //    StaffBLL staff = new StaffBLL();
+        //    stf.Staffid = Convert.ToInt32(Session["id"]);
+        //    dt = staff.Staff_Verfication(stf);
+        //    if (dt.Rows.Count > 0)
+        //    {
+        //        foreach (DataRow dr in dt.Rows)
+        //        {
+        //            if (dr["TrainingAttend"].ToString() == "NO")
+        //            {
+        //                data += "<div class='col-lg-7'>" +
+        //                    "<div class='iq-card'>" +
+        //                   "<div class='iq-card-header d-flex justify-content-between'>" +
+        //                         "<div class='iq-header-title'>" +
+        //                            "<h4 class='card-title'>Training Document</h4>" +
+        //                         "</div>" +
+        //                      "</div>" +
+        //                "<div class='iq-card-header d-flex justify-content-between'>" +
+        //                   "<div class='iq-header-title'>" +
+        //                       "<div class='iq-card-body'>" +
+        //                         "<ul class='speciality-list m-0 p-0'>" +
+        //                            "<li class='d-flex mb-4 align-items-center'>" +
+        //                               "<div class='user-img img-fluid'><a href = '#' class='iq-bg-primary'><i class='ri-award-fill'></i></a></div>" +
+        //                               "<div class='media-support-info ml-3'>" +
+        //                                  "<h6>Training</h6>" +
+        //                                 "<p class='badge badge-primary'>Training was not attended</p>" +
+
+        //                               "</div>" +
+        //                            "</li>" +
+        //                         "</ul>" +
+        //                      "</div>" +
+        //                   "</div>" +
+        //                "</div>" +
+        //                 "</div>" +
+        //             "</div>";
+
+        //            }
+        //            else
+        //            {
+        //                DateTime dateTimeIssue = Convert.ToDateTime(dr["Issuedate"]);
+        //                string dateIssue = dateTimeIssue.ToString("dd/MM/yyyy");
+        //                DateTime dateTimeExpire = Convert.ToDateTime(dr["Issuedate"]);
+        //                string dateExpire = dateTimeExpire.ToString("dd/MM/yyyy");
+
+
+        //                string doc = dr["TrainingDoc"].ToString();
+        //                string path = "Files/Training/" + doc + "";
+
+
+        //                data += "<div class='col-lg-7'>" +
+        //                    "<div class='container iq-card'>" +
+        //                   "<div class='iq-card-header d-flex justify-content-between'>" +
+        //                         "<div class='iq-header-title'>" +
+        //                            "<h4 class='card-title'>Training Document</h4>" +
+        //                         "</div>" +
+        //                      "</div>" +
+        //                "<div class='iq-card-header d-flex justify-content-between'>" +
+        //                   "<div class='iq-header-title'>" +
+        //                       "<div class='iq-card-body'>" +
+        //                         "<ul class='speciality-list m-0 p-0'>" +
+        //                            "<li class='d-flex mb-4 align-items-center'>" +
+        //                               "<div class='user-img img-fluid'><a href = '#' class='iq-bg-primary'><i class='ri-award-fill'></i></a></div>" +
+        //                               "<div class='media-support-info ml-3'>" +
+        //                                  "<h6>Issue Date</h6>" +
+        //                                   "<p class='mb-0'>" + dateIssue + "</p>" +
+        //                                    "<h6>Expire Date</h6>" +
+        //                                   "<p class='mb-0'>" + dateExpire + "</p>" +
+        //                                     "<h6>Training Document</h6>" +
+
+
+
+        //                                 "<a href='" + path + "' class='btn btn-primary float-right' target='_blank'>Training Document</a>" +
+
+        //                               "</div>" +
+        //                            "</li>" +
+        //                         "</ul>" +
+        //                      "</div>" +
+        //                   "</div>" +
+        //                "</div>" +
+        //                "</div>" +
+        //             "</div>";
+        //            }
+        //        }
+        //    }
+
+        //    return data;
+
+
+
+        //}
     }
 }

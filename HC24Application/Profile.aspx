@@ -19,7 +19,7 @@
                       <%=GetAddress()%>
                   </div>
                    <%=GetOtherDetails()%>
-           <%=GetProofDocuments()%>
-              <%=GetProofTraining()%>
+           <%--<%=GetProofDocuments()%>
+              <%=GetProofTraining()%>--%>
                </div>
 </asp:Content>
