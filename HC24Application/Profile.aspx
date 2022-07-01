@@ -2,6 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <form runat="server">
     <div class="row">
                   <div class="col-lg-5">
                      <div class="iq-card">
@@ -21,5 +22,17 @@
                    <%=GetOtherDetails()%>
            <%--<%=GetProofDocuments()%>
               <%=GetProofTraining()%>--%>
+
+       <div class="col-sm-12">
+                     <div class="iq-card">
+                        <div class="iq-card-header d-flex ">
+                            <asp:Button ID="verify" runat="server" class="btn btn-primary button_profile" Text="Verify"   CausesValidation="False" />
+                <asp:Button ID="Delete" runat="server" class="btn btn-primary button_profile" Text="Delete"   CausesValidation="False" />
+                <asp:Button ID="Update" runat="server" class="btn btn-primary button_profile" Text="Update"   CausesValidation="False" />
+                
+                        </div>
+                            </div>
+        </div>
                </div>
+        </form>
 </asp:Content>

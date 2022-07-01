@@ -698,6 +698,7 @@
          <ContentTemplate>
              <div>
                     <asp:Button ID="Staffadd" runat="server" class="btn btn-primary" Text="AddewUser" onclientclick="return validate()"   OnClick="Staffadd_Click" CausesValidation="False" />
+                
                  </div>
                         </ContentTemplate>
         </asp:UpdatePanel>   
