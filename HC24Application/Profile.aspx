@@ -3,6 +3,10 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <form runat="server">
+    <asp:ScriptManager ID="ScriptManager1" runat="server">
+    </asp:ScriptManager>
+        <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+         <ContentTemplate>
     <div class="row">
                   <div class="col-lg-5">
                      <div class="iq-card">
@@ -20,9 +24,6 @@
                       <%=GetAddress()%>
                   </div>
                    <%=GetOtherDetails()%>
-           <%--<%=GetProofDocuments()%>
-              <%=GetProofTraining()%>--%>
-
        <div class="col-sm-12">
                      <div class="iq-card">
                         <div class="iq-card-header d-flex ">
@@ -34,5 +35,7 @@
                             </div>
         </div>
                </div>
+              </ContentTemplate>
+             </asp:UpdatePanel>
         </form>
 </asp:Content>
